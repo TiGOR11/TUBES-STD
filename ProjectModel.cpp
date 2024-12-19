@@ -613,7 +613,7 @@ void Menu(MLL &M, int IDProject, int IDTugas){
                     BackHandler();
                 } else if(inputMenuSearch == 4){
                     system("CLS");
-                    printf("Masukkan Durasi Project yang dicari : ");
+                    printf("Masukkan Status Project yang dicari : ");
                     string inputStatP;
                     cin >> inputStatP;
                     if (inputStatP == "Selesai" || inputStatP == "selesai"){
