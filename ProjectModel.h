@@ -8,6 +8,7 @@
 #define infoProject(P) P->infoProject
 #define infoTugas(T) T->infoTugas
 #define nextProject(P) P->nextProject
+#define prevProject(P) P->prevProject
 #define nextTugas(T) T->nextTugas
 #define FirstTugas(P) P->FirstTugas
 #define FirstProject(M) M.FirstProject
@@ -40,6 +41,7 @@ struct infotypeTugas{
 struct Project{
     infotypeProject infoProject;
     adrProject nextProject;
+    adrProject prevProject;
     adrTugas FirstTugas;
     adrTugas LastTugas;
 };
@@ -65,6 +67,7 @@ void InsertLastProject(MLL &M, adrProject P);
 void ShowProject(MLL M);
 void DeleteFirstProject(MLL &M, adrProject &P);
 void DeleteLastProject(MLL &M, adrProject &P);
+void DeleteAfterProject(MLL &M, adrProject &P, adrProject &prec);
 
 adrProject SearchIDProject(MLL M, int x);
 void SearchNamaProject(MLL M, string x);
@@ -76,18 +79,25 @@ void InputTugas(adrTugas &T, int ID);
 
 void InsertFirstTugas(MLL &M, int ID, adrTugas T);
 void EditProject(MLL &M, int ID);
-void EditTugas(MLL &M, int IDProject, int IDTugas, infotypeTugas y);
+void EditTugas(MLL &M, int IDProject, int IDTugas);
 void ShowAll(MLL M);
+
 adrTugas SearchIDTugas(MLL M, adrProject P, int ID);
-void DeleteFirstTugas(MLL &M, int IDProject, adrTugas &T);
-void DeleteLastTugas(MLL &M, int IDProject, adrTugas &T);
+void SearchNamaTugas(MLL &M,adrProject P, string x);
+void SearchDurasiTugas(MLL &M, adrProject P,int x);
+void SearchStatusTugas(MLL &M, adrProject P, bool x);
+
+void DeleteFirstTugas(MLL &M, adrProject P, adrTugas &T);
+void DeleteLastTugas(MLL &M, adrProject P, adrTugas &T);
+void DeleteAfterTugas(MLL &M, adrProject P, adrTugas &T, adrTugas &prec);
 int CalculateDurationProject(adrProject P);
 
 bool CalculateStatusProject(adrProject P);
 
 void Menu(MLL &M, int IDProject, int IDTugas);
 
-
+void BackHandler();
+void UpdateProject(int IDProject);
 
 
 #endif // PROJECTMODEL_H_INCLUDED
